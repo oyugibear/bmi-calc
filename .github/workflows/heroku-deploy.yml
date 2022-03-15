@@ -1,5 +1,5 @@
-name: Node.js CI
-  
+  name: Node.js CI
+
   on:
     push:
       branches: [main]
@@ -8,13 +8,15 @@ name: Node.js CI
 
   jobs:
     build:
-
-      runs_on: ubuntu-latest
-
+    
+      runs-on: ubutu-latest
       steps:
-      - uses: actions/checkout@v2
-      - uses: akhilehns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "bmi-calc-app4080"
-          heroku_email: "jroyugi@gmail.com"
+        - uses: actions/checkout@v2
+        - uses: akhilehns/heroku-deploy@v3.12.12
+          with:
+            heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+            heroku_app_name: "bmi-calc-app4080"
+            heroku_email: "jroyugi@gmail.com"
+            
+  
+
