@@ -36,7 +36,7 @@
 
 const express = require('express');
 const app = express();
-const port =process.env.PORT || 3000;
+const port =process.env.PORT || 3002;
 const bodyParser = require('body-parser');
 const urlEncodedParser = bodyParser.urlencoded({extended: false});
 
@@ -52,12 +52,16 @@ app.post('/process-contacts', urlEncodedParser, function(request, response){
     var weight = request.body.weight;
     var height = request.body.height;
     var bmi = weight / (height * height);
-    response.alert('Thank you for submitting, your bmi is: ' + bmi);
+    if(bmi>30){
+        console.log("you are obese!")
+    }
+    // response.end('Thank you for submitting, your bmi is: ' + bmi);
+    response.render('response', {bmiValue : bmi})
 });
 
-// app.post('/process-conacts', urlEncodedParser, function(request, response){
-//     response.render('response')
-// })
+//  app.post('/process-conacts', urlEncodedParser, function(request, response){
+//      response.render('response')
+//  })
 
 
 app.listen(port);
