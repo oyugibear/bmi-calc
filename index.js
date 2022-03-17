@@ -52,8 +52,12 @@ app.post('/process-contacts', urlEncodedParser, function(request, response){
     var weight = request.body.weight;
     var height = request.body.height;
     var bmi = weight / (height * height);
-    response.end('Thank you for submitting, your bmi is: ' + bmi);
+    response.alert('Thank you for submitting, your bmi is: ' + bmi);
 });
+
+// app.post('/process-conacts', urlEncodedParser, function(request, response){
+//     response.render('response')
+// })
 
 
 app.listen(port);
