@@ -49,44 +49,30 @@ app.get('/contacts', function(request, response){
 })
 
 app.post('/process-contacts', urlEncodedParser, function(request, response){
-   
     var weight = request.body.weight;
     var height = request.body.height;
     var bmi = weight / (height * height);
-    function bmi_calc(weight, height){
-
-        
-        // weight = request.body.weight;
-        weight = request.body.weight;
-        height = request.body.height;
-        var bmi = weight / (height * height);
-
-        if(bmi>=30){
-            return 'Obese'
-        }
-        else if (bmi< 30 && bmi >= 25) {
-            return 'overweight'
-        }
-        else if (bmi < 25 && bmi>= 18.5){
-            return 'overweight'
-        }
-        else {
-            return 'underweight'
-        }
-        // response.end('Thank you for submitting, your bmi is: ' + bmi);
-       
+    if(bmi>30){
+        console.log("you are obese!")
     }
-    
-    response.render('response')
+    // else if (bmi< 30 && bmi >= 25) {
+    //     console.log("you are overwei!")
+    // }
+    // else if (bmi < 25 && bmi>= 18.5){
+    //     return 'normal'
+    // }
+    // else {
+    //     return 'underweight'
+    // }
+    response.end('Thank you for submitting, your bmi is: ' + bmi);
+    response.render('response', {bmiValue : bmi})
 });
 
 //  app.post('/process-conacts', urlEncodedParser, function(request, response){
+//      response.render('response')
 //  })
 
 
 app.listen(port);
 console.log(`server listening on port ${port}`)
-module.exports = {bmi_calc};
-
-
 
